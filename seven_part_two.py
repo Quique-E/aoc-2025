@@ -46,7 +46,7 @@ for i in range(1, h):
                 # add however many beams arrived in each of surrounding columns
                 beams_per_column[splitter.start() - 1] += beams_per_column[splitter.start()]
                 beams_per_column[splitter.start() + 1] += beams_per_column[splitter.start()]
-                # subtract one from the column
+                # remove from the column
                 beams_per_column[splitter.start()] = 0
 
 total = 0
