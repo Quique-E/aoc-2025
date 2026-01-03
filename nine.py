@@ -21,14 +21,17 @@ matrix = dict()
 
 for i in input:
     for j in input:
-        if i == j:
+        # avoid checking against itself and also doing [a][b] and [b][a] rectangles
+        if i >= j:
             continue
 
         key = str(i) + str(j)
-        res = np.array(i) - np.array(j) + np.array([1, 1])
-        res = res[0] * res[1]
+        w = abs(i[0] - j[0]) + 1
+        h = abs(i[1] - j[1]) + 1
+        res = w * h
 
-        matrix[key] = res
+        if res > 0:
+            matrix[key] = res
 
 sorted_matrix = {k: v for k, v in sorted(matrix.items(), reverse=True, key=itemgetter(1))}
 
